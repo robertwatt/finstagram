@@ -1,0 +1,36 @@
+header {
+  background-color: #244751;
+  color: #E8FDFF;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+main {
+  background-color: white;
+  padding: 16px;
+}
+
+.finstagram-post {
+  margin-bottom: 48px;
+}
+
+.finstagram-post .user-info img {
+  border-radius: 50%;
+}
+
+font-family: 'Open Sans', sans-serif;
+
+
+body {
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+}
+
+  a.photo{
+    transition: padding 0.5s;
+  }
+  a.photo:hover{
+    padding: 10px;
+  }
