@@ -5,7 +5,8 @@ helpers do
 end
 
 get '/' do
-    @finstagram_posts = FinstagramPost.order(created_at: :desc)
+    # @finstagram_posts = FinstagramPost.all
+    @finstagram_posts = FinstagramPost.joins(:user).where.not(user: nil).order(created_at: :desc)
     erb(:index)
 end
 
@@ -78,4 +79,19 @@ end
 get '/finstagram_posts/:id' do
   @finstagram_post = FinstagramPost.find(params[:id])   # find the finstagram post with the ID from the URL
   erb(:"finstagram_posts/show")               # render app/views/finstagram_posts/show.erb
+end
+
+post '/comments' do
+  # point values from params to variables
+  text = params[:text]
+  finstagram_post_id = params[:finstagram_post_id]
+
+  # instantiate a comment with those values & assign the comment to the `current_user`
+  comment = Comment.new({ text: text, finstagram_post_id: finstagram_post_id, user_id: current_user.id })
+
+  # save the comment
+  comment.save
+
+  # `redirect` back to wherever we came from
+  redirect(back)
 end
